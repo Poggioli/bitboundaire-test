@@ -1,12 +1,12 @@
 {
   "categories": [
     {
-      "favorite": true,
+      "favorite": false,
       "id": "fa572550-ee37-4c33-9b91-8a69f902175c",
       "name": "Cooking"
     },
     {
-      "favorite": true,
+      "favorite": false,
       "id": "fb572550-ee37-4c33-9b91-8a69f902175c",
       "name": "Latest Tech News"
     },
@@ -31,9 +31,9 @@
       "favorite": false
     },
     {
+      "favorite": true,
       "id": "e7f8g9h0-i1j2-k3l4-m5n6-o7p8q9r0s1t",
-      "name": "Motorsport",
-      "favorite": false
+      "name": "Motorsport"
     }
   ],
   "posts": [

@@ -1,11 +1,11 @@
 import { Category } from "@/apis/category/get-categories.api";
 import { useMemo, useState } from "react";
 
-type useSideMenuMobileProps = {
+type UseSideMenuMobileProps = {
   categories: Category[];
 };
 
-function useSideMenuMobile({ categories }: useSideMenuMobileProps) {
+function useSideMenuMobile({ categories }: UseSideMenuMobileProps) {
   const [selectedRadio, setSelectedRadio] = useState("all-categories");
 
   const categoriesData: Category[] = useMemo(() => {

@@ -3,9 +3,9 @@ import { useUpdateCategoryApi } from "@/apis/category/update-category.api";
 import { useParams } from "next/navigation";
 import { MouseEvent } from "react";
 
-type useCategoryBadgeProps = Category;
+type UseCategoryBadgeProps = Category;
 
-function useCategoryBadge({ favorite, id, name }: useCategoryBadgeProps) {
+function useCategoryBadge({ favorite, id, name }: UseCategoryBadgeProps) {
   const { id: categoryId } = useParams();
   const updateCategoryApi = useUpdateCategoryApi({});
 

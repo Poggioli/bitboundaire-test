@@ -29,7 +29,7 @@ const SideMenuMobile: FC<SideMenuMobileProps> = ({ categories, isLoading, isErro
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button size="icon" variant="outline" className="sm:hidden">
+        <Button size="icon" variant="outline" className="md:hidden">
           <PanelLeft className="h-5 w-5" />
           <span className="sr-only">Menu</span>
         </Button>

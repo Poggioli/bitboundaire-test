@@ -1,6 +1,7 @@
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
 import { AxiosError, GenericAbortSignal } from "axios";
 import { API } from "../api";
+import { toDate } from "date-fns";
 
 type Post = {
   id: string;
@@ -27,6 +28,13 @@ type GetPostsByCategoryFnParams = GetPostsByCategoryPathParams & {
   signal: GenericAbortSignal;
 };
 
+function mapPost(post: Post): Post {
+  return {
+    ...post,
+    date: toDate(post.date)
+  }
+}
+
 async function getPostsByCategoryFn(
   params: GetPostsByCategoryFnParams
 ): Promise<GetPostsByCategoryResponse> {
@@ -35,7 +43,7 @@ async function getPostsByCategoryFn(
   const url = URL(category)
   const response = await API.get<GetPostsByCategoryResponse>(url, { signal });
 
-  return response.data;
+  return response.data.map(mapPost);
 }
 
 type GetPostsByCategoryApiOptions = Omit<

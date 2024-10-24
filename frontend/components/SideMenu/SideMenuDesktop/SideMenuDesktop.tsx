@@ -24,7 +24,7 @@ const SideMenuDesktop: FC<SideMenuDesktopProps> = ({ categories, isLoading, isEr
   } = useSideMenuDesktop({ categories })
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-10 hidden w-auto flex-col border-r bg-background sm:flex">
+    <aside className="fixed inset-y-0 left-0 z-10 hidden w-auto flex-col border-r bg-background md:flex">
       <div className="flex items-center justify-center w-full p-5 bg-primary">
         <p className="text-primary-foreground leading-7">Posts</p>
       </div>

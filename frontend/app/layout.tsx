@@ -35,15 +35,15 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <QueryClientProvider client={queryClient}>
-          <div className="flex min-h-screen w-full flex-col lg:max-w-screen-lg xl:max-w-screen-xl mx-auto sm:mx-0">
-            <div className="hidden sm:block">
+          <div className="flex min-h-screen w-full flex-col lg:max-w-screen-lg xl:max-w-screen-2xl mx-auto md:mx-0">
+            <div className="hidden md:block">
               <SideMenu />
             </div>
-            <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-96 h-screen">
-              <header className="sticky top-0 z-30 flex items-center gap-4 border-b bg-background px-4 py-2 md:py-0 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
+            <div className="flex flex-col md:gap-4 md:py-4 md:pl-96 h-screen">
+              <header className="sticky top-0 z-30 flex items-center gap-4 border-b bg-background px-4 py-2 md:py-0 md:static md:h-auto md:border-0 md:bg-transparent md:px-6">
                 <SideMenu />
               </header>
-              <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 sm:p-6 sm:pt-0">
+              <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 md:p-6 md:pt-0">
                 {children}
               </main>
             </div>

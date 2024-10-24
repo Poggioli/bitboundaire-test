@@ -1,11 +1,11 @@
 import { Category } from "@/apis/category/get-categories.api";
 import { useMemo, useState } from "react";
 
-type useSideMenuDesktopProps = {
+type UseSideMenuDesktopProps = {
   categories: Category[];
 };
 
-function useSideMenuDesktop({ categories }: useSideMenuDesktopProps) {
+function useSideMenuDesktop({ categories }: UseSideMenuDesktopProps) {
   const [selectedRadio, setSelectedRadio] = useState("all-categories");
 
   const categoriesData: Category[] = useMemo(() => {
