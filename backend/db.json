@@ -6,12 +6,12 @@
       "name": "Cooking"
     },
     {
-      "favorite": false,
+      "favorite": true,
       "id": "fb572550-ee37-4c33-9b91-8a69f902175c",
       "name": "Latest Tech News"
     },
     {
-      "favorite": true,
+      "favorite": false,
       "id": "0e6f3713-bbf9-4a56-a653-8743960176b7",
       "name": "Product Reviews"
     },
@@ -31,7 +31,7 @@
       "favorite": false
     },
     {
-      "favorite": true,
+      "favorite": false,
       "id": "e7f8g9h0-i1j2-k3l4-m5n6-o7p8q9r0s1t",
       "name": "Motorsport"
     }

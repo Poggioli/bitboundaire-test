@@ -8,4 +8,4 @@ function useSideMenu() {
   }
 }
 
-export { useSideMenu }
+export { useSideMenu };

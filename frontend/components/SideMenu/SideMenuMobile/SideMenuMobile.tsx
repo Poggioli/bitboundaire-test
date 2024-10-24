@@ -1,15 +1,10 @@
 import { Category } from "@/apis/category/get-categories.api";
-import { CategoryBadge } from "@/components/CategoryBadge";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Sheet, SheetClose, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Cross2Icon } from "@radix-ui/react-icons";
 import { PanelLeft } from "lucide-react";
 import { FC } from "react";
-import { useSideMenuMobile } from "./useSideMenuMobile";
-import Link from "next/link";
-
+import { Menu } from "../Menu";
 
 type SideMenuMobileProps = {
   isSuccess: boolean;
@@ -18,13 +13,7 @@ type SideMenuMobileProps = {
   categories: Category[];
 }
 
-const SideMenuMobile: FC<SideMenuMobileProps> = ({ categories, isLoading, isError, isSuccess }) => {
-
-  const {
-    categoriesData,
-    selectedRadio,
-    setSelectedRadio
-  } = useSideMenuMobile({ categories })
+const SideMenuMobile: FC<SideMenuMobileProps> = (props: SideMenuMobileProps) => {
 
   return (
     <Sheet>
@@ -34,50 +23,19 @@ const SideMenuMobile: FC<SideMenuMobileProps> = ({ categories, isLoading, isErro
           <span className="sr-only">Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="sm:max-w-xs">
+      <SheetContent side="left" className="sm:max-w-xs p-0">
         <SheetTitle className="sr-only">Menu</SheetTitle>
         <SheetDescription className="sr-only">Menu</SheetDescription>
-        <div className="flex items-center justify-center w-full p-5 bg-primary mt-4">
+        <SheetClose className="text-primary-foreground absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
+          <Cross2Icon className="h-4 w-4" />
+          <span className="sr-only">Close</span>
+        </SheetClose>
+        <div className="flex items-center justify-center w-full p-5 bg-primary">
           <p className="text-primary-foreground leading-7">Posts</p>
         </div>
-        <RadioGroup value={selectedRadio} onValueChange={setSelectedRadio} className="grid-cols-2 mb-12 mt-6">
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="all-categories" id="all-categories" />
-            <Label htmlFor="all-categories">All categories</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem value="favorite-categories" id="favorite-categories" />
-            <Label htmlFor="favorite-categories">Favorite categories</Label>
-          </div>
-        </RadioGroup>
-        <nav className="flex flex-col items-start gap-3">
-          {isLoading ? (
-            <>
-              {new Array(10).fill(0).map((_, index) => (
-                <Skeleton key={index} className="h-9 min-w-20 w-auto" />
-              ))}
-            </>
-          ) : null}
-
-          {isError ? (
-            <div>
-              <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">Oops!</h3>
-              <p className="leading-7">Something went wrong.</p>
-            </div>
-          ) : null}
-
-          {isSuccess && categoriesData.length === 0 ? (
-            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">Empty categories!</h3>
-          ) : null}
-
-          {isSuccess && categoriesData.length > 0 ? (
-            categoriesData.map((category) => (
-              <Link key={category.id} href={`/category/${category.id}`}>
-                <CategoryBadge  {...category} />
-              </Link>
-            ))
-          ) : null}
-        </nav>
+        <div className="px-4">
+          <Menu {...props} />
+        </div>
       </SheetContent>
     </Sheet>
   )
