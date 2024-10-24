@@ -1,24 +1,24 @@
 {
   "categories": [
     {
+      "favorite": false,
       "id": "fa572550-ee37-4c33-9b91-8a69f902175c",
-      "name": "Cooking",
-      "favorite": false
+      "name": "Cooking"
     },
     {
-      "favorite": false,
+      "favorite": true,
       "id": "fb572550-ee37-4c33-9b91-8a69f902175c",
       "name": "Latest Tech News"
     },
     {
-      "favorite": false,
+      "favorite": true,
       "id": "0e6f3713-bbf9-4a56-a653-8743960176b7",
       "name": "Product Reviews"
     },
     {
+      "favorite": false,
       "id": "fdffc4e4-0ff8-4e76-b522-1eeb43f3587c",
-      "name": "DIY Projects",
-      "favorite": false
+      "name": "DIY Projects"
     },
     {
       "id": "d5c9d5c9-5a5c-4f5f-9a9a-7c8a8c7c8a8c",

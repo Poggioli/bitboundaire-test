@@ -30,7 +30,9 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <div className="flex min-h-screen w-full flex-col lg:max-w-screen-lg xl:max-w-screen-xl mx-auto">
-            <SideMenu />
+            <div className="hidden sm:block">
+              <SideMenu />
+            </div>
             <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-56 h-screen">
               <header className="sticky top-0 z-30 flex items-center gap-4 border-b bg-background px-4 py-2 md:py-0 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
                 <SideMenu />
