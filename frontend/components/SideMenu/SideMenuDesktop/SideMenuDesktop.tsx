@@ -5,6 +5,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Skeleton } from "@/components/ui/skeleton";
 import { FC } from "react";
 import { useSideMenuDesktop } from "./useSideMenuDesktop";
+import Link from "next/link";
 
 
 type SideMenuDesktopProps = {
@@ -60,7 +61,9 @@ const SideMenuDesktop: FC<SideMenuDesktopProps> = ({ categories, isLoading, isEr
 
         {isSuccess && categoriesData.length > 0 ? (
           categoriesData.map((category) => (
-            <CategoryBadge key={category.id} {...category} />
+            <Link key={category.id} href={`/category/${category.id}`}>
+              <CategoryBadge  {...category} />
+            </Link>
           ))
         ) : null}
       </nav>

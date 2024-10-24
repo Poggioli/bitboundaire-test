@@ -1,7 +1,7 @@
 {
   "categories": [
     {
-      "favorite": false,
+      "favorite": true,
       "id": "fa572550-ee37-4c33-9b91-8a69f902175c",
       "name": "Cooking"
     },
@@ -21,9 +21,9 @@
       "name": "DIY Projects"
     },
     {
+      "favorite": false,
       "id": "d5c9d5c9-5a5c-4f5f-9a9a-7c8a8c7c8a8c",
-      "name": "Investing",
-      "favorite": true
+      "name": "Investing"
     },
     {
       "id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",

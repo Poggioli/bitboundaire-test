@@ -8,6 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { PanelLeft } from "lucide-react";
 import { FC } from "react";
 import { useSideMenuMobile } from "./useSideMenuMobile";
+import Link from "next/link";
 
 
 type SideMenuMobileProps = {
@@ -71,7 +72,9 @@ const SideMenuMobile: FC<SideMenuMobileProps> = ({ categories, isLoading, isErro
 
           {isSuccess && categoriesData.length > 0 ? (
             categoriesData.map((category) => (
-              <CategoryBadge key={category.id} {...category} />
+              <Link key={category.id} href={`/category/${category.id}`}>
+                <CategoryBadge  {...category} />
+              </Link>
             ))
           ) : null}
         </nav>
