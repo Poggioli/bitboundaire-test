@@ -1,10 +1,13 @@
 import { Category } from "@/app/apis/category/get-categories.api";
 import { CategoryBadge } from "@/components/CategoryBadge";
 import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Skeleton } from "@/components/ui/skeleton";
 import { PanelLeft } from "lucide-react";
 import { FC } from "react";
+import { useSideMenuMobile } from "./useSideMenuMobile";
 
 
 type SideMenuMobileProps = {
@@ -15,6 +18,12 @@ type SideMenuMobileProps = {
 }
 
 const SideMenuMobile: FC<SideMenuMobileProps> = ({ categories, isLoading, isError, isSuccess }) => {
+
+  const {
+    categoriesData,
+    selectedRadio,
+    setSelectedRadio
+  } = useSideMenuMobile({ categories })
 
   return (
     <Sheet>
@@ -27,7 +36,20 @@ const SideMenuMobile: FC<SideMenuMobileProps> = ({ categories, isLoading, isErro
       <SheetContent side="left" className="sm:max-w-xs">
         <SheetTitle className="sr-only">Menu</SheetTitle>
         <SheetDescription className="sr-only">Menu</SheetDescription>
-        <nav className="flex flex-col items-start gap-3 p-4">
+        <div className="flex items-center justify-center w-full p-5 bg-primary mt-4">
+          <p className="text-primary-foreground leading-7">Posts</p>
+        </div>
+        <RadioGroup value={selectedRadio} onValueChange={setSelectedRadio} className="grid-cols-2 mb-12 mt-6">
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="all-categories" id="all-categories" />
+            <Label htmlFor="all-categories">All categories</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="favorite-categories" id="favorite-categories" />
+            <Label htmlFor="favorite-categories">Favorite categories</Label>
+          </div>
+        </RadioGroup>
+        <nav className="flex flex-col items-start gap-3">
           {isLoading ? (
             <>
               {new Array(10).fill(0).map((_, index) => (
@@ -43,12 +65,12 @@ const SideMenuMobile: FC<SideMenuMobileProps> = ({ categories, isLoading, isErro
             </div>
           ) : null}
 
-          {isSuccess && categories.length === 0 ? (
+          {isSuccess && categoriesData.length === 0 ? (
             <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">Empty categories!</h3>
           ) : null}
 
-          {isSuccess && categories.length > 0 ? (
-            categories.map((category) => (
+          {isSuccess && categoriesData.length > 0 ? (
+            categoriesData.map((category) => (
               <CategoryBadge key={category.id} {...category} />
             ))
           ) : null}

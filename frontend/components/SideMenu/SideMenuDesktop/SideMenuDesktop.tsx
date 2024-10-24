@@ -1,7 +1,10 @@
 import { Category } from "@/app/apis/category/get-categories.api";
 import { CategoryBadge } from "@/components/CategoryBadge";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Skeleton } from "@/components/ui/skeleton";
 import { FC } from "react";
+import { useSideMenuDesktop } from "./useSideMenuDesktop";
 
 
 type SideMenuDesktopProps = {
@@ -13,8 +16,28 @@ type SideMenuDesktopProps = {
 
 const SideMenuDesktop: FC<SideMenuDesktopProps> = ({ categories, isLoading, isError, isSuccess }) => {
 
+  const {
+    categoriesData,
+    selectedRadio,
+    setSelectedRadio
+  } = useSideMenuDesktop({ categories })
+
   return (
     <aside className="fixed inset-y-0 left-0 z-10 hidden w-auto flex-col border-r bg-background sm:flex">
+      <div className="flex items-center justify-center w-full p-5 bg-primary">
+        <p className="text-primary-foreground leading-7">Posts</p>
+      </div>
+      <RadioGroup value={selectedRadio} onValueChange={setSelectedRadio} className="grid-cols-2 mb-12 p-4 mt-6">
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="all-categories" id="all-categories" />
+          <Label htmlFor="all-categories">All categories</Label>
+        </div>
+        <div className="flex items-center space-x-2">
+          <RadioGroupItem value="favorite-categories" id="favorite-categories" />
+          <Label htmlFor="favorite-categories">Favorite categories</Label>
+        </div>
+      </RadioGroup>
+
       <nav className="flex flex-col items-start gap-3 p-4">
         {isLoading ? (
           <>
@@ -31,12 +54,12 @@ const SideMenuDesktop: FC<SideMenuDesktopProps> = ({ categories, isLoading, isEr
           </div>
         ) : null}
 
-        {isSuccess && categories.length === 0 ? (
+        {isSuccess && categoriesData.length === 0 ? (
           <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">Empty categories!</h3>
         ) : null}
 
-        {isSuccess && categories.length > 0 ? (
-          categories.map((category) => (
+        {isSuccess && categoriesData.length > 0 ? (
+          categoriesData.map((category) => (
             <CategoryBadge key={category.id} {...category} />
           ))
         ) : null}
