@@ -23,10 +23,12 @@ function usePostCard({ categories }: UsePostCardProps) {
     );
     const index = categoriesFiltereds.findIndex(({ id }) => id === categoryId);
 
-    [categoriesFiltereds[0], categoriesFiltereds[index]] = [
-      categoriesFiltereds[index],
-      categoriesFiltereds[0],
-    ];
+    if (index > -1) {
+      [categoriesFiltereds[0], categoriesFiltereds[index]] = [
+        categoriesFiltereds[index],
+        categoriesFiltereds[0],
+      ];
+    }
 
     return categoriesFiltereds;
   }, [
@@ -34,7 +36,7 @@ function usePostCard({ categories }: UsePostCardProps) {
     getCategoriesApi.isError,
     getCategoriesApi.data,
     categories,
-    categoryId
+    categoryId,
   ]);
 
   return {
