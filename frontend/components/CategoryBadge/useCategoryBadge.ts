@@ -1,5 +1,5 @@
-import { Category } from "@/app/apis/category/get-categories.api";
-import { useUpdateCategoryApi } from "@/app/apis/category/update-category.api";
+import { Category } from "@/apis/category/get-categories.api";
+import { useUpdateCategoryApi } from "@/apis/category/update-category.api";
 import { MouseEvent } from "react";
 
 type useCategoryBadgeProps = Category;

@@ -1,4 +1,4 @@
-import { Category } from "@/app/apis/category/get-categories.api";
+import { Category } from "@/apis/category/get-categories.api";
 import { CategoryBadge } from "@/components/CategoryBadge";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";

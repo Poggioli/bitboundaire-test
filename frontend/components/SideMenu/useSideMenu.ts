@@ -1,4 +1,4 @@
-import { useGetCategoriesApi } from "@/app/apis/category/get-categories.api";
+import { useGetCategoriesApi } from "@/apis/category/get-categories.api";
 
 function useSideMenu() {
   const getCategoriesApi = useGetCategoriesApi({});

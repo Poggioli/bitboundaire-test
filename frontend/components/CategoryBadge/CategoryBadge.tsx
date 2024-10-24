@@ -1,6 +1,6 @@
-import { Category } from "@/app/apis/category/get-categories.api";
+import { Category } from "@/apis/category/get-categories.api";
 import { FC } from "react";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCategoryBadge } from "./useCategoryBadge";

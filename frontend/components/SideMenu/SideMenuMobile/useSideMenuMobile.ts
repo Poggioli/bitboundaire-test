@@ -1,4 +1,4 @@
-import { Category } from "@/app/apis/category/get-categories.api";
+import { Category } from "@/apis/category/get-categories.api";
 import { useMemo, useState } from "react";
 
 type useSideMenuMobileProps = {
