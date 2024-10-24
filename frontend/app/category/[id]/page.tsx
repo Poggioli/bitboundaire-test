@@ -1,13 +1,10 @@
+'use client'
+
+import { PostsList } from "@/components/PostsList";
 import { FC } from "react";
 
-type CategoryByIdPageProps = {
-  params: {
-    id: string
-  }
-}
-
-const CategoryByIdPage: FC<CategoryByIdPageProps> = ({ params: { id } }) => {
-  return <p className="leading-7">{id}</p>
+const CategoryByIdPage: FC = () => {
+  return <PostsList />
 }
 
 export default CategoryByIdPage

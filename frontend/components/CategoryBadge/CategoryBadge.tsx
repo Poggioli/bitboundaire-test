@@ -1,8 +1,8 @@
 import { Category } from "@/apis/category/get-categories.api";
-import { FC } from "react";
 import { Button } from "@/components/ui/button";
-import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Star } from "lucide-react";
+import { FC } from "react";
 import { useCategoryBadge } from "./useCategoryBadge";
 
 type CategoryBadgeProps = Category
@@ -11,24 +11,27 @@ const CategoryBadge: FC<CategoryBadgeProps> = ({ name, favorite, id }) => {
 
   const {
     handleOnFavoriteClick,
-    updateCategoryApi
+    updateCategoryApi,
+    categoryId
   } = useCategoryBadge({ favorite, id, name });
 
   return (
-    <Button>
+    <Button
+      variant={categoryId === id ? 'outline' : 'default'}
+      className={cn(categoryId === id && "border-primary text-primary hover:bg-primary hover:text-primary-foreground")}
+    >
       {name}
       <p onClick={handleOnFavoriteClick}>
-
-      <Star
-        className={cn(
-          "size-4",
-          favorite && "fill-[currentColor]",
-          updateCategoryApi.isPending && "cursor-not-allowed pointer-events-none"
-        )}
+        <Star
+          className={cn(
+            "size-4",
+            favorite && "fill-[currentColor]",
+            updateCategoryApi.isPending && "cursor-not-allowed pointer-events-none"
+          )}
         />
-        </p>
+      </p>
     </Button>
   )
 }
 
-export { CategoryBadge }
+export { CategoryBadge };

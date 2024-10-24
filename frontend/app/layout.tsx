@@ -16,7 +16,13 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 10000
+    }
+  }
+})
 
 export default function RootLayout({
   children,
@@ -24,12 +30,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <div className="flex min-h-screen w-full flex-col lg:max-w-screen-lg xl:max-w-screen-xl mx-auto">
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <QueryClientProvider client={queryClient}>
+          <div className="flex min-h-screen w-full flex-col lg:max-w-screen-lg xl:max-w-screen-xl mx-auto sm:mx-0">
             <div className="hidden sm:block">
               <SideMenu />
             </div>
@@ -42,8 +48,8 @@ export default function RootLayout({
               </main>
             </div>
           </div>
-        </body>
-      </html>
-    </QueryClientProvider>
+        </QueryClientProvider>
+      </body>
+    </html>
   );
 }

@@ -6,7 +6,7 @@ import {
 import { API } from "../api";
 import {
   Category,
-  useGetCategoriesApiQueryKey as getCategoriesApiQueryKey,
+  getCategoriesApiQueryKey
 } from "./get-categories.api";
 import { AxiosError } from "axios";
 import {
@@ -45,13 +45,7 @@ const useUpdateCategoryApi = ({ options }: UseUpdateCategoryApi) => {
       await options?.onSuccess?.(data, variables, context);
       queryClient.refetchQueries({
         exact: false,
-        queryKey: getCategoriesApiQueryKey({}),
-      });
-      queryClient.refetchQueries({
-        exact: false,
-        queryKey: getPostsByCategoryApiQueryKey(
-          {} as GetPostsByCategoryPathParams
-        ),
+        queryKey: getCategoriesApiQueryKey,
       });
     },
   });

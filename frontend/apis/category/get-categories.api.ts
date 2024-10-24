@@ -7,42 +7,25 @@ type Category = {
   id: string;
   name: string;
   favorite: boolean;
-}
-
-type GetCategoriesSearchParams = {
-  favorite?: boolean;
 };
 
-type GetCategoriesQueryKey = [string, string, GetCategoriesSearchParams];
+type GetCategoriesQueryKey = [string, string];
 
-const queryKey = (
-  searchParams: GetCategoriesSearchParams
-): GetCategoriesQueryKey => ["get", "categories", searchParams];
+const queryKey: GetCategoriesQueryKey = ["get", "categories"];
 
-const URL = "/categories";
+const url = "/categories";
 
 type GetCategoriesResponse = Category[];
 
-type GetCategoriesFnParams = GetCategoriesSearchParams & {
+type GetCategoriesFnParams = {
   signal: GenericAbortSignal;
 };
 
 async function getCategoriesFn(
   params: GetCategoriesFnParams
 ): Promise<GetCategoriesResponse> {
-  const { signal, ...rest } = params;
+  const { signal } = params;
 
-  const searchParams = qs.stringify(
-    {
-      ...rest,
-    },
-    {
-      allowEmptyArrays: false,
-      skipNulls: true,
-    }
-  );
-
-  const url = `${URL}?${searchParams}`;
   const response = await API.get<GetCategoriesResponse>(url, { signal });
 
   return response.data;
@@ -58,18 +41,18 @@ type GetCategoriesApiOptions = Omit<
   "queryKey" | "queryFn"
 >;
 
-type GetCategoriesApi = GetCategoriesSearchParams & {
+type GetCategoriesApi = {
   options?: GetCategoriesApiOptions;
 };
 
-function useGetCategoriesApi({ favorite, options }: GetCategoriesApi) {
+function useGetCategoriesApi({ options }: GetCategoriesApi) {
   return useQuery({
     ...options,
-    queryKey: queryKey({ favorite }),
-    queryFn: async ({ queryKey, signal }) => getCategoriesFn({ favorite: queryKey[2].favorite, signal }),
+    staleTime: Infinity,
+    queryKey,
+    queryFn: async ({ queryKey, signal }) => getCategoriesFn({ signal }),
   });
 }
 
-export { useGetCategoriesApi, queryKey as useGetCategoriesApiQueryKey };
+export { useGetCategoriesApi, queryKey as getCategoriesApiQueryKey };
 export type { Category, GetCategoriesResponse };
-
