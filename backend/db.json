@@ -6,14 +6,14 @@
       "favorite": false
     },
     {
+      "favorite": false,
       "id": "fb572550-ee37-4c33-9b91-8a69f902175c",
-      "name": "Latest Tech News",
-      "favorite": false
+      "name": "Latest Tech News"
     },
     {
+      "favorite": false,
       "id": "0e6f3713-bbf9-4a56-a653-8743960176b7",
-      "name": "Product Reviews",
-      "favorite": false
+      "name": "Product Reviews"
     },
     {
       "id": "fdffc4e4-0ff8-4e76-b522-1eeb43f3587c",
@@ -158,7 +158,8 @@
       "description": "Starting and growing a successful business requires determination, innovation, and strategic planning. Our entrepreneurship blog provides valuable resources, success stories, and practical advice to inspire and guide you on your journey to becoming a thriving entrepreneur.",
       "date": "2024-02-11",
       "categories": [
-        "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d", "d5c9d5c9-5a5c-4f5f-9a9a-7c8a8c7c8a8c"
+        "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+        "d5c9d5c9-5a5c-4f5f-9a9a-7c8a8c7c8a8c"
       ]
     },
     {
@@ -166,7 +167,8 @@
       "description": "For motorsport enthusiasts, staying updated on the latest races, team developments, and technological advancements is a must. Our motorsport blog delivers thrilling updates, in-depth race analysis, and behind-the-scenes stories from the world of racing, ensuring you never miss a moment of the action.",
       "date": "2024-01-01",
       "categories": [
-        "e7f8g9h0-i1j2-k3l4-m5n6-o7p8q9r0s1t", "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d"
+        "e7f8g9h0-i1j2-k3l4-m5n6-o7p8q9r0s1t",
+        "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d"
       ]
     }
   ]

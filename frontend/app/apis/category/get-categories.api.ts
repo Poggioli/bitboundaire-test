@@ -71,5 +71,5 @@ function useGetCategoriesApi({ favorite, options }: GetCategoriesApi) {
 }
 
 export { useGetCategoriesApi, queryKey as useGetCategoriesApiQueryKey };
-export type { Category };
+export type { Category, GetCategoriesResponse };
 
